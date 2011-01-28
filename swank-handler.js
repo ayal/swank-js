@@ -260,11 +260,15 @@ DefaultRemote.prototype.kind = function kind () {
 DefaultRemote.prototype.id = function id () {
   return "node.js";
 };
-
+var vm = require('vm');
 DefaultRemote.prototype.evaluate = function evaluate (id, str) {
   var r;
   try {
-    r = evalcx(str, this.context, "repl");
+      
+//      r = vm.runInNewContext(str, module.parent.parent);
+      
+//    r = evalcx(str, this.context, "repl");
+      r = eval(str);
   } catch (e) {
     r = undefined;
     this.output(e.stack);

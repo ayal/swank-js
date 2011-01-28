@@ -72,6 +72,7 @@ SwankJS.setup = function setup () {
       self.debug("eval: %o", m);
       // var m = JSON.parse(message);
       try {
+
         var r = window.eval(m.code);
       } catch (e) {
         var message = String(e);
